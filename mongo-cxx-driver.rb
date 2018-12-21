@@ -19,9 +19,7 @@ class MongoCxxDriver < Formula
 
   def install
     mongo_c_prefix = Formula["mongo-c-driver"].opt_prefix
-    system "cmake", ".", *std_cmake_args,
-      "-DBUILD_SHARED_LIBS=OFF", "-DCMAKE_BUILD_TYPE=Release", "-DCMAKE_INSTALL_PREFIX=/usr/local", 
-      "-DLIBBSON_DIR=#{mongo_c_prefix}", "-DLIBMONGOC_DIR=#{mongo_c_prefix}"
+    system "cmake", ".", *std_cmake_args, "-DBUILD_SHARED_LIBS=OFF", "-DLIBBSON_DIR=#{mongo_c_prefix}", "-DLIBMONGOC_DIR=#{mongo_c_prefix}"
     system "make"
     system "make", "install"
     pkgshare.install "examples"
