@@ -32,7 +32,7 @@ class Doxygen < Formula
     args << "-Duse_libclang=ON -DLLVM_CONFIG=#{Formula["llvm"].opt_bin}/llvm-config" if build.with? "llvm"
 
     mkdir "build" do
-      system "cmake", "..", *args
+      system "/Users/#{ENV['USER']}/bin/cmake", "..", *args
       system "make"
     end
     bin.install Dir["build/bin/*"]
