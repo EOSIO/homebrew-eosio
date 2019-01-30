@@ -8,8 +8,6 @@ class MongoCxxDriver < Formula
   #depends_on "cmake" => :build
   depends_on "mongo-c-driver"
 
-  needs :cxx11
-
   def install
     mongo_c_prefix = Formula["mongo-c-driver"].opt_prefix
     system "/Users/#{ENV['USER']}/bin/cmake", ".", *std_cmake_args, "-DBUILD_SHARED_LIBS=OFF", "-DLIBBSON_DIR=#{mongo_c_prefix}", "-DLIBMONGOC_DIR=#{mongo_c_prefix}"
