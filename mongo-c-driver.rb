@@ -5,12 +5,12 @@ class MongoCDriver < Formula
   sha256 "25164e03b08baf9f2dd88317f1a36ba36b09f563291a7cf241f0af8676155b8d"
   head "https://github.com/mongodb/mongo-c-driver.git"
 
-  #depends_on "cmake" => :build
+  depends_on "cmake" => :build
   depends_on "pkg-config" => :build
   depends_on "sphinx-doc" => :build
 
   def install
-    system "/Users/#{ENV['USER']}/bin/cmake", ".", *std_cmake_args, "-DENABLE_BSON=ON", "-DENABLE_AUTOMATIC_INIT_AND_CLEANUP=OFF", "-DENABLE_STATIC=ON"
+    system "cmake", ".", *std_cmake_args, "-DENABLE_BSON=ON", "-DENABLE_AUTOMATIC_INIT_AND_CLEANUP=OFF", "-DENABLE_STATIC=ON"
     system "make", "install"
     (pkgshare/"libbson").install "src/libbson/examples"
     (pkgshare/"libmongoc").install "src/libmongoc/examples"

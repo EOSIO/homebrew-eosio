@@ -5,14 +5,14 @@ class MongoCxxDriver < Formula
   sha256 "e9772ac5cf1c996c2f77fd78e25aaf74a2abf5f3864cb31b18d64955fd41c14d"
   head "https://github.com/mongodb/mongo-cxx-driver.git"
 
-  #depends_on "cmake" => :build
+  depends_on "cmake" => :build
   depends_on "mongo-c-driver"
 
   needs :cxx11
 
   def install
     mongo_c_prefix = Formula["mongo-c-driver"].opt_prefix
-    system "/Users/#{ENV['USER']}/bin/cmake", ".", *std_cmake_args, "-DBUILD_SHARED_LIBS=OFF", "-DLIBBSON_DIR=#{mongo_c_prefix}", "-DLIBMONGOC_DIR=#{mongo_c_prefix}"
+    system "cmake", ".", *std_cmake_args, "-DBUILD_SHARED_LIBS=OFF", "-DLIBBSON_DIR=#{mongo_c_prefix}", "-DLIBMONGOC_DIR=#{mongo_c_prefix}"
     system "make"
     system "make", "install"
     pkgshare.install "examples"
