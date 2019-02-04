@@ -8,7 +8,7 @@ class MongoCxxDriver < Formula
   depends_on "cmake" => :build
   depends_on "mongo-c-driver"
 
-  needs :cxx11
+  #needs :cxx11
 
   def install
     mongo_c_prefix = Formula["mongo-c-driver"].opt_prefix
