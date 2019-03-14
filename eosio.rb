@@ -2,21 +2,22 @@ class Eosio < Formula
 
    homepage "https://github.com/eosio/eos"
    revision 0
-   url "https://github.com/eosio/eos/archive/v1.6.3.tar.gz"
-   version "1.6.3"
+   url "https://github.com/eosio/eos/archive/v1.7.0.tar.gz"
+   version "1.7.0"
 
    option :universal
 
    depends_on "gmp"
    depends_on "gettext"
    depends_on "openssl"
+   depends_on "libusb"
    depends_on :macos => :high_sierra
    depends_on :arch =>  :intel
 
    bottle do
-      root_url "https://github.com/eosio/eos/releases/download/v1.6.3"
-      sha256 "ea267ebb3f6c2ddd73b4bf53120197190cb476b390134856a20a56069c20dbaa" => :high_sierra
-      sha256 "457a3604196624458258aefc21eaf007b0e07401decfbcb1a1f3b603c053b87d" => :mojave
+      root_url "https://github.com/eosio/eos/releases/download/v1.7.0"
+      sha256 "a7a07d94da8b0de1f7ba93d1601e35ab16633256562a8e1c490c750de495d57b" => :high_sierra
+      sha256 "aa01b4bc4fb0c06dfdbfb849cb5e37ecd8a0f3277dce8798ab239bd4322e8abd" => :mojave
    end
    def install
       raise "Error, only supporting binary packages at this time"
