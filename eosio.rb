@@ -11,7 +11,7 @@ class Eosio < Formula
    depends_on "gettext"
    depends_on "openssl"
    depends_on "libusb"
-   depends_on :macos => :high_sierra
+   depends_on :macos => :mojave
    depends_on :arch =>  :intel
 
    bottle do
