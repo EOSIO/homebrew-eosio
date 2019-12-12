@@ -22,7 +22,6 @@ class LlvmAT7 < Formula
     
 
   depends_on "cmake" => :build
-  depends_on :xcode => :build
   depends_on "libffi"
 
   def install
