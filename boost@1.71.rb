@@ -58,7 +58,7 @@ class BoostAT171 < Formula
     end
 
     system "./bootstrap.sh", *bootstrap_args
-    system "./b2", "headers"
+    system "./b2 -j#{ENV.make_jobs}", "headers"
     system "./b2", *args
   end
 
