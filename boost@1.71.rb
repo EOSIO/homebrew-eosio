@@ -7,7 +7,8 @@ class BoostAT171 < Formula
   head "https://github.com/boostorg/boost.git"
 
   bottle do
-
+    root_url "https://eos-public-oss-binaries.s3-us-west-2.amazonaws.com"
+    cellar :any
   end
 
   depends_on "icu4c"

@@ -7,7 +7,8 @@ class LlvmAT4 < Formula
   version "4.0.1"
 
   bottle do
-
+    root_url "https://eos-public-oss-binaries.s3-us-west-2.amazonaws.com"
+    cellar :any
   end
 
   # Clang cannot find system headers if Xcode CLT is not installed
