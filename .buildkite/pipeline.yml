@@ -9,7 +9,7 @@ steps:
       - "brew install --build-bottle eosio/eosio/boost@1.71"
       - "brew bottle eosio/eosio/boost@1.71"
       - "brew postinstall eosio/eosio/boost@1.71"
-      - "for filename in *.tar.gz; do echo $filename; mv $filename ${filename/-/}; done"
+      - "./.buildkite/bottle.sh"
       - "buildkite-agent artifact upload *.tar.gz"
     plugins:
       - chef/anka#v0.5.5:
@@ -37,7 +37,6 @@ steps:
       - "brew install --build-bottle eosio/eosio/llvm@4"
       - "brew bottle eosio/eosio/llvm@4"
       - "brew postinstall eosio/eosio/llvm@4"
-      - "for filename in *.tar.gz; do echo \$filename; mv \$filename \${filename/-/}; done"
       - "buildkite-agent artifact upload *.tar.gz"
     plugins:
       - chef/anka#v0.5.5:
@@ -65,7 +64,6 @@ steps:
       - "brew install --build-bottle eosio/eosio/llvm@7"
       - "brew bottle eosio/eosio/llvm@7"
       - "brew postinstall eosio/eosio/llvm@7"
-      - "for filename in *.tar.gz; do echo $filename; mv $filename ${filename/-/}; done"
       - "buildkite-agent artifact upload *.tar.gz"
     plugins:
       - chef/anka#v0.5.5:
