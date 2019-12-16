@@ -37,6 +37,7 @@ steps:
       - "brew install --build-bottle eosio/eosio/llvm@4"
       - "brew bottle eosio/eosio/llvm@4"
       - "brew postinstall eosio/eosio/llvm@4"
+      - "./.buildkite/bottle.sh"
       - "buildkite-agent artifact upload *.tar.gz"
     plugins:
       - chef/anka#v0.5.5:
@@ -64,6 +65,7 @@ steps:
       - "brew install --build-bottle eosio/eosio/llvm@7"
       - "brew bottle eosio/eosio/llvm@7"
       - "brew postinstall eosio/eosio/llvm@7"
+      - "./.buildkite/bottle.sh"
       - "buildkite-agent artifact upload *.tar.gz"
     plugins:
       - chef/anka#v0.5.5:
