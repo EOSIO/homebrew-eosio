@@ -37,7 +37,7 @@ steps:
       - "brew install --build-bottle eosio/eosio/llvm@4"
       - "brew bottle eosio/eosio/llvm@4"
       - "brew postinstall eosio/eosio/llvm@4"
-      - "for filename in *.tar.gz; do echo $filename; mv $filename ${filename/-/}; done"
+      - "for filename in *.tar.gz; do echo \$filename; mv \$filename \${filename/-/}; done"
       - "buildkite-agent artifact upload *.tar.gz"
     plugins:
       - chef/anka#v0.5.5:
