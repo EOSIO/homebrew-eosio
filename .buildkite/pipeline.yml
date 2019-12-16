@@ -10,7 +10,7 @@ steps:
       - "cd homebrew-eosio && brew bottle eosio/eosio/boost@1.71"
       - "cd homebrew-eosio && brew postinstall eosio/eosio/boost@1.71"
       - "cd homebrew-eosio && ./.buildkite/bottle.sh"
-      - "buildkite-agent artifact upload *.tar.gz"
+      - "cd homebrew-eosio && buildkite-agent artifact upload *.tar.gz"
     plugins:
       - chef/anka#v0.5.5:
           no-volume: true
@@ -38,7 +38,7 @@ steps:
       - "cd homebrew-eosio && brew bottle eosio/eosio/llvm@4"
       - "cd homebrew-eosio && brew postinstall eosio/eosio/llvm@4"
       - "cd homebrew-eosio && ./.buildkite/bottle.sh"
-      - "buildkite-agent artifact upload *.tar.gz"
+      - "cd homebrew-eosio && buildkite-agent artifact upload *.tar.gz"
     plugins:
       - chef/anka#v0.5.5:
           no-volume: true
@@ -66,7 +66,7 @@ steps:
       - "cd homebrew-eosio && brew bottle eosio/eosio/llvm@7"
       - "cd homebrew-eosio && brew postinstall eosio/eosio/llvm@7"
       - "cd homebrew-eosio && ./.buildkite/bottle.sh"
-      - "buildkite-agent artifact upload *.tar.gz"
+      - "cd homebrew-eosio && buildkite-agent artifact upload *.tar.gz"
     plugins:
       - chef/anka#v0.5.5:
           no-volume: true
