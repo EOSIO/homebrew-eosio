@@ -7,11 +7,7 @@ class BoostAT171 < Formula
   head "https://github.com/boostorg/boost.git"
 
   bottle do
-    cellar :any
-    rebuild 1
-    sha256 "41a5d38f5a7c626a064f5c5a9f8d620b76e9b5f2cf7eda85a52998a86b33bc85" => :catalina
-    sha256 "9e026db92f0a38c7c222227c39d54c350490046e7e86920668f300ba4a773a32" => :mojave
-    sha256 "8bd88f7245f35545ea5b3091408660148e6e819effe29191161da4968f15800d" => :high_sierra
+
   end
 
   depends_on "icu4c"
