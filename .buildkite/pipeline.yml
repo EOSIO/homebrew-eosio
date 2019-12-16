@@ -1,9 +1,15 @@
 steps:
   - wait
 
-  - label: Build
+  - label: Build boost 1.71
     command: 
-      - echo "new build"
+      - "git clone $BUILDKITE_REPO homebrew-eosio && cd homebrew-eosio && git checkout -f $BUILDKITE_COMMIT"
+      - "brew tap eosio/eosio"
+      - "cd /usr/local/Homebrew/Library/Taps/eosio/homebrew-eosio && git pull origin $BUILDKITE_BRANCH && git checkout $BUILDKITE_COMMIT && cd -"
+      - "brew install --build-bottle eosio/eosio/boost@1.71"
+      - "brew bottle eosio/eosio/boost@1.71"
+      - "brew postinstall eosio/eosio/boost@1.71"
+      - "buildkite-agent artifact upload *.tar.gz"
     plugins:
       - chef/anka#v0.5.5:
           no-volume: true
