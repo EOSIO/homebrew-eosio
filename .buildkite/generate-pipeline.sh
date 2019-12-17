@@ -4,7 +4,7 @@ echo '  - wait'
 for DEP in $(ls *.rb | grep -v -e eosio -e doxygen); do
     cat <<EOF 
 
-  - label: :hammer: Mojave Bottle | ${DEP%.*}
+  - label: ":hammer: Mojave Bottle | ${DEP%.*}"
     command:
       - "git clone $BUILDKITE_REPO homebrew-eosio && cd homebrew-eosio && git checkout -f $BUILDKITE_COMMIT"
       - "cd homebrew-eosio && ./.buildkite/bottle.sh $DEP"
@@ -28,7 +28,7 @@ for DEP in $(ls *.rb | grep -v -e eosio -e doxygen); do
     agents:
       queue: mac-anka-node-fleet
 
-  - label: ":hammer: Catalina Bottle | ${DEP%.*}
+  - label: ":hammer: Catalina Bottle | ${DEP%.*}"
     command:
       - "git clone $BUILDKITE_REPO homebrew-eosio && cd homebrew-eosio && git checkout -f $BUILDKITE_COMMIT"
       - "cd homebrew-eosio && ./.buildkite/bottle.sh $DEP"
