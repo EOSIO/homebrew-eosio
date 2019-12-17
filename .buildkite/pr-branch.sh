@@ -12,7 +12,8 @@ for DEP in $(ls *.rb | grep -v -e eosio -e doxygen); do
         echo $DEP $ARTIFACT $LINE
     done
     # Write $LINE to appropriate location in file.
-    awk -v awkvar="$LINE" '/cellar/ {print "    "awkvar;} 1' $DEP >> $DEP
+    awk -v awkvar="$LINE" '/cellar/ {print "    "awkvar;} 1' $DEP >> $DEP.tmp
+    mv $DEP.tmp $DEP
 done
 
 # Push new branch named 'cicd-$BUILDKITE_BRANCH' goes here.
