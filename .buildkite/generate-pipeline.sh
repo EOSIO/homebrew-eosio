@@ -34,7 +34,7 @@ for DEP in $(ls *.rb | grep -v -e eosio -e doxygen); do
       - "git clone $BUILDKITE_REPO homebrew-eosio && cd homebrew-eosio && git checkout -f $BUILDKITE_COMMIT"
       - "cd homebrew-eosio && ./.buildkite/build-bottle.sh ${DEP%.*}"
       - "cd homebrew-eosio && buildkite-agent artifact upload *.tar.gz"
-    if: build.branch !~ /^cicd-
+    if: build.branch !~ /^cicd-/
     plugins:
       - chef/anka#v0.5.5:
           no-volume: true
@@ -66,7 +66,7 @@ for DEP in $(ls *.rb | grep -v -e eosio -e doxygen); do
       - "cd homebrew-eosio && buildkite-agent artifact download *.tar.gz --step ':hammer: Mojave Bottle | ${DEP%.*}'"
       - "cd homebrew-eosio && buildkite-agent artifact download *.tar.gz --step ':hammer: Catalina Bottle | ${DEP%.*}'"
       - "cd homebrew-eosio && ./.buildkite/pr-branch.sh"
-    if: build.branch !~ /^cicd-
+    if: build.branch !~ /^cicd-/
     plugins:
       - chef/anka#v0.5.5:
           no-volume: true
