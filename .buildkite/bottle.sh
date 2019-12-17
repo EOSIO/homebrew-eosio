@@ -10,7 +10,6 @@ cd $GIT_DIR
 for dep in $(ls *.rb | grep -v -e eosio -e doxygen); do
     brew install --build-bottle eosio/eosio/${dep%.*}
     brew bottle eosio/eosio/${dep%.*}
-    brew postinstall eosio/eosio/${dep%.*}
 done
 
 for file in *.tar.gz; do 
