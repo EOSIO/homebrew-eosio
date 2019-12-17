@@ -7,7 +7,7 @@ class LlvmAT7 < Formula
   version "7.1.0"
 
   bottle do
-    root_url "https://eos-public-oss-binaries.s3-us-west-2.amazonaws.com"]
+    root_url "https://eos-public-oss-binaries.s3-us-west-2.amazonaws.com"
     cellar :any
   end
 
