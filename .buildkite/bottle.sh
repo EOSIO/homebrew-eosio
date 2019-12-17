@@ -1,17 +1,16 @@
 #!/bin/bash
 set -eo pipefail
 GIT_DIR=$(pwd)
+DEP=$1
 
 brew tap eosio/eosio
 cd /usr/local/Homebrew/Library/Taps/eosio/homebrew-eosio
 git pull origin $BUILDKITE_BRANCH && git checkout -f $BUILDKITE_COMMIT
 cd $GIT_DIR
 
-for dep in $(ls *.rb | grep -v -e eosio -e doxygen); do
-    brew install --build-bottle eosio/eosio/${dep%.*}
-    brew bottle eosio/eosio/${dep%.*}
-done
+brew install --build-bottle eosio/eosio/$DEP
+brew bottle eosio/eosio/$DEP
 
-for file in *.tar.gz; do 
-    mv $file ${file/-/}
+for FILE in *.tar.gz; do 
+    mv $FILE ${FILE/-/}
 done
