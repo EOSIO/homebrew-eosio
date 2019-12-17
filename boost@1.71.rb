@@ -9,6 +9,7 @@ class BoostAT171 < Formula
   bottle do
     root_url "https://eos-public-oss-binaries.s3-us-west-2.amazonaws.com"
     cellar :any
+    sha256 "582b3485389138490e4a18455b4331d499703c1eaf4528ce2291652ebfc3451c" => :mojave
   end
 
   depends_on "icu4c"
