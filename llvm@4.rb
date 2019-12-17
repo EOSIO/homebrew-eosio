@@ -9,7 +9,6 @@ class LlvmAT4 < Formula
   bottle do
     root_url "https://eos-public-oss-binaries.s3-us-west-2.amazonaws.com"
     cellar :any
-    sha256 "96502741d1491c2bbeef238fd412fe4b959177f8dc023d27793e26a20b903e8d" => :mojave
   end
 
   # Clang cannot find system headers if Xcode CLT is not installed
