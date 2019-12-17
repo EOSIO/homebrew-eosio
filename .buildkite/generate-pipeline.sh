@@ -7,7 +7,7 @@ for DEP in $(ls *.rb | grep -v -e eosio -e doxygen); do
   - label: ":hammer: Mojave Bottle | ${DEP%.*}"
     command:
       - "git clone $BUILDKITE_REPO homebrew-eosio && cd homebrew-eosio && git checkout -f $BUILDKITE_COMMIT"
-      - "cd homebrew-eosio && ./.buildkite/bottle.sh $DEP"
+      - "cd homebrew-eosio && ./.buildkite/bottle.sh ${DEP%.*}"
       - "cd homebrew-eosio && buildkite-agent artifact upload *.tar.gz"
     # if: build.branch !~ /^cicd-/
     plugins:
@@ -31,7 +31,7 @@ for DEP in $(ls *.rb | grep -v -e eosio -e doxygen); do
   - label: ":hammer: Catalina Bottle | ${DEP%.*}"
     command:
       - "git clone $BUILDKITE_REPO homebrew-eosio && cd homebrew-eosio && git checkout -f $BUILDKITE_COMMIT"
-      - "cd homebrew-eosio && ./.buildkite/bottle.sh $DEP"
+      - "cd homebrew-eosio && ./.buildkite/bottle.sh ${DEP%.*}"
       - "cd homebrew-eosio && buildkite-agent artifact upload *.tar.gz"
     # if: build.branch !~ /^cicd-
     plugins:
