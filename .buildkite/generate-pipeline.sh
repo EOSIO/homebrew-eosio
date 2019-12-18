@@ -65,8 +65,8 @@ cat <<EOF
 EOF
 for DEP in $(ls *.rb | grep -v -e eosio -e doxygen); do
     cat <<EOF
-      - "cd homebrew-eosio && buildkite-agent artifact download *.tar.gz . --step ':hammer: Mojave Bottle | ${DEP%.*}'"
-      - "cd homebrew-eosio && buildkite-agent artifact download *.tar.gz . --step ':hammer: Catalina Bottle | ${DEP%.*}'"
+      - "cd homebrew-eosio && buildkite-agent artifact download '*.tar.gz' . --step ':hammer: Mojave Bottle | ${DEP%.*}'"
+      - "cd homebrew-eosio && buildkite-agent artifact download '*.tar.gz' . --step ':hammer: Catalina Bottle | ${DEP%.*}'"
 EOF
 done
 cat <<EOF
