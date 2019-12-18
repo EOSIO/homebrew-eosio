@@ -73,22 +73,10 @@ cat <<EOF
       - "cd homebrew-eosio && ./.buildkite/pr-branch.sh"
     if: build.branch !~ /^cicd-/
     plugins:
-      - chef/anka#v0.5.5:
-          no-volume: true
-          inherit-environment-vars: true
-          vm-name: "10.15.1_6C_14G_40G"
-          vm-registry-tag: "clean::cicd::git-ssh::nas::brew::buildkite-agent"
-          always-pull: true
-          debug: true
-          wait-network: true
-          failover-registries:
-            - 'registry_1'
-            - 'registry_2'
-          pre-execute-sleep: 10
       - thedyrt/skip-checkout#v0.1.1:
           cd: ~
     agents:
-      queue: mac-anka-node-fleet
+      queue: automation-eos-apps-builder-fleet
 
 EOF
 

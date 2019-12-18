@@ -3,7 +3,7 @@ set -eo pipefail
 
 for DEP in $(ls *.rb | grep -v -e eosio -e doxygen); do
     for ARTIFACT in $(ls *.tar.gz | grep -e ${DEP%.*}); do
-        HASH=$(shasum -a 256 $ARTIFACT | cut -f 1 -d ' ' )
+        HASH=$(sha256sum $ARTIFACT | cut -f 1 -d ' ' )
         [[ $ARTIFACT =~ 'mojave' ]] && OSX_VERSION='mojave' || OSX_VERSION='catalina'
         LINE="sha256 \"$HASH\" => :$OSX_VERSION"
         echo $DEP $ARTIFACT $LINE
