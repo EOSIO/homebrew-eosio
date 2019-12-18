@@ -61,6 +61,7 @@ echo ''
 cat <<EOF 
   - label: ":rocket: Create Branch for PR"
     command:
+      - "ssh-keyscan -H github.com >> ~/.ssh/known_hosts"
       - "git clone $BUILDKITE_REPO homebrew-eosio && cd homebrew-eosio && git checkout $BUILDKITE_BRANCH"
 EOF
 for DEP in $(ls *.rb | grep -v -e eosio -e doxygen); do
