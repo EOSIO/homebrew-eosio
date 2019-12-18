@@ -17,4 +17,4 @@ cat *.rb
 git checkout -b cicd-$BUILDKITE_BRANCH
 git add *.rb
 git commit -m "Populate hashes for buildkite artifacts."
-echo "git push -u origin cicd-$BUILDKITE_BRANCH"
+git push -u origin cicd-$BUILDKITE_BRANCH
