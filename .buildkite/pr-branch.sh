@@ -12,11 +12,10 @@ for DEP in $(ls *.rb | grep -v -e eosio -e doxygen); do
     done
 done
 
-# Push new branch named 'cicd-$BUILDKITE_BRANCH' goes here.
 cat *.rb
 git config --global user.name $(whoami)
 git config --global user.email ""
 git checkout -b cicd-$BUILDKITE_BRANCH
 git add *.rb
-git commit -m "Populate hashes for buildkite artifacts."
+git commit -m "Populate hashes from Buildkite pipeline."
 git push -u origin cicd-$BUILDKITE_BRANCH
