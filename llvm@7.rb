@@ -8,6 +8,8 @@ class LlvmAT7 < Formula
 
   bottle do
     root_url "https://eos-public-oss-binaries.s3-us-west-2.amazonaws.com"
+    sha256 "1a60218550d6fda9a79e695e975675785823a25675626daf1dc1076b63bf2814" => :catalina
+    sha256 "7e62b1d35995b4a23e02a82e846d39fdcfb7141dae7918e6a34f5d005539e9e5" => :mojave
     cellar :any
   end
 

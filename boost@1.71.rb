@@ -8,6 +8,8 @@ class BoostAT171 < Formula
 
   bottle do
     root_url "https://eos-public-oss-binaries.s3-us-west-2.amazonaws.com"
+    sha256 "2b069ecc1eec2d6b946a1b61b19849a4647ed975c502e3f482c16bc84e18b359" => :catalina
+    sha256 "e67dd537d4c14f68c4e2b37abc485463c6560187caee56d710b4d65ae3e29848" => :mojave
     cellar :any
   end
 
