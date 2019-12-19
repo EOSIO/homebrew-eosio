@@ -26,6 +26,7 @@ for DEP in $(ls *.rb | grep -v -e eosio -e doxygen); do
           pre-execute-sleep: 10
       - thedyrt/skip-checkout#v0.1.1:
           cd: ~
+    timeout: "${TIMEOUT:-20}"
     agents:
       queue: mac-anka-node-fleet
 
@@ -50,6 +51,7 @@ for DEP in $(ls *.rb | grep -v -e eosio -e doxygen); do
           pre-execute-sleep: 10
       - thedyrt/skip-checkout#v0.1.1:
           cd: ~
+    timeout: "${TIMEOUT:-20}"
     agents:
       queue: mac-anka-node-fleet
 
@@ -76,6 +78,7 @@ cat <<EOF
     plugins:
       - thedyrt/skip-checkout#v0.1.1:
           cd: ~
+    timeout: "${TIMEOUT:-10}"
     agents:
       queue: automation-eos-apps-builder-fleet
 
@@ -105,6 +108,7 @@ for DEP in $(ls *.rb | grep -v -e eosio -e doxygen); do
           pre-execute-sleep: 10
       - thedyrt/skip-checkout#v0.1.1:
           cd: ~
+    timeout: "${TIMEOUT:-5}"
     agents:
       queue: mac-anka-node-fleet
 
@@ -128,6 +132,7 @@ for DEP in $(ls *.rb | grep -v -e eosio -e doxygen); do
           pre-execute-sleep: 10
       - thedyrt/skip-checkout#v0.1.1:
           cd: ~
+    timeout: "${TIMEOUT:-5}"
     agents:
       queue: mac-anka-node-fleet
 EOF

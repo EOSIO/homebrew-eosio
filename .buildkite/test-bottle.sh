@@ -9,5 +9,3 @@ git pull origin $BUILDKITE_BRANCH && git checkout -f $BUILDKITE_COMMIT
 cd $GIT_DIR
 
 brew install --force-bottle eosio/eosio/$DEP
-
-# Logic to ensure we installed via bottle and not by building from source goes here.
