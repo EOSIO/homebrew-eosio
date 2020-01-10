@@ -2,8 +2,8 @@ class Eosio < Formula
 
    homepage "https://github.com/eosio/eos"
    revision 0
-   url "https://github.com/eosio/eos/archive/v1.8.8.tar.gz"
-   version "1.8.8"
+   url "https://github.com/eosio/eos/archive/v1.8.9.tar.gz"
+   version "1.8.9"
 
    option :universal
 
@@ -15,8 +15,8 @@ class Eosio < Formula
    depends_on :arch =>  :intel
 
    bottle do
-      root_url "https://github.com/eosio/eos/releases/download/v1.8.8"
-      sha256 "9cbdba8517b2350e9fa91a9e2dd51d985f8cb5128ef4c93ecd3f7c6afc3f9d93" => :mojave
+      root_url "https://github.com/eosio/eos/releases/download/v1.8.9"
+      sha256 "e8c890f031d911a832a193898aa106184fdf55eeb12adb72690d7e0833430699" => :mojave
    end
    def install
       raise "Error, only supporting binary packages at this time"
