@@ -16,7 +16,7 @@ class Eosio < Formula
 
    bottle do
       root_url "https://github.com/eosio/eos/releases/download/v2.0.2"
-      sha256 "db3f00e5013eaf9d85a6719f1818d4ec8937f89518f0aff2e9eb3c6b256ca826" => :mojave
+      sha256 "676ec95042718686e37ea9f6f30b828217bc3f798a85dd67c48d17538e276c5b" => :mojave
    end
    def install
       raise "Error, only supporting binary packages at this time"
