@@ -1,3 +1,6 @@
+# typed: false
+# frozen_string_literal: true
+
 class Doxygen < Formula
   desc "EOSIO VERSION (no cmake): Generate documentation for several programming languages"
   homepage "http://www.doxygen.org/"
@@ -15,7 +18,7 @@ class Doxygen < Formula
   deprecated_option "with-libclang" => "with-llvm"
   deprecated_option "with-qt5" => "with-qt"
 
-  #depends_on "cmake" => :build
+  # depends_on "cmake" => :build
   depends_on "graphviz" => :optional
   depends_on "qt" => :optional
 
@@ -32,7 +35,7 @@ class Doxygen < Formula
     args << "-Duse_libclang=ON -DLLVM_CONFIG=#{Formula["llvm"].opt_bin}/llvm-config" if build.with? "llvm"
 
     mkdir "build" do
-      system "/Users/#{ENV['USER']}/bin/cmake", "..", *args
+      system "/Users/#{ENV["USER"]}/bin/cmake", "..", *args
       system "make"
     end
     bin.install Dir["build/bin/*"]
