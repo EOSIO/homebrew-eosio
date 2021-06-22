@@ -8,8 +8,8 @@ class Eosio < Formula
   revision 0
 
   bottle do
-    root_url "https://github.com/eosio/eos/releases/download/v2.0.12"
-    sha256 mojave: "2e03b4fe73e0cdc70e607b35e35294f49d6833439176b4dedc846e62a3b77005"
+    root_url "https://github.com/eosio/eos/releases/download/v2.1.0"
+    sha256 mojave: "c3f66cdf5fb02469a9e8d11cb2637eb347ba44b2b68ef77d84bdb1401d6bb685"
   end
 
   bottle do
