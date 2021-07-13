@@ -4,6 +4,7 @@
       - "./${BUILDKITE_PIPELINE_SLUG}/.ci/test.sh"
     env:
       GIT_TAG: "${TAG}"
+      PACKAGE: "${PACKAGE}"
       TAP: "${TAP}"
     plugins:
       - EOSIO/anka#v0.6.1:
