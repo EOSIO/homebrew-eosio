@@ -39,7 +39,9 @@ echo "$ $BREW_INSTALL"
 eval $BREW_INSTALL
 echo '+++ :label: Full Version Label Test'
 cd eos
-export BUILD_ROOT="$(which nodeos | sed 's_/bin/nodeos__g')"
+WHICH_NODEOS='which nodeos'
+echo "$ $WHICH_NODEOS"
+export BUILD_ROOT="$(which nodeos | tee >(cat - >&9) | sed 's_/bin/nodeos__g')"
 echo "Found nodeos at \"$BUILD_ROOT/bin/nodeos\"."
 export BUILDKITE_COMMIT="$(git rev-parse HEAD)" # override homebrew-eosio commit with eos tag commit
 echo "Found git commit '$REPO_UNDER_TEST:$BUILDKITE_COMMIT'."
