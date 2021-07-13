@@ -3,9 +3,13 @@
       - "git clone --recursive --single-branch --branch '${BUILDKITE_BRANCH}' '${BUILDKITE_REPO}'"
       - "./${BUILDKITE_PIPELINE_SLUG}/.ci/test.sh"
     env:
+      BOTTLE: "${BOTTLE}"
       GIT_TAG: "${TAG}"
+      OS: "${OS}"
       PACKAGE: "${PACKAGE}"
       REPO_UNDER_TEST: "${REPO_UNDER_TEST}"
+      ROOT_URL: "${ROOT_URL}"
+      RUBY_FILE: "${RUBY_FILE}"
       TAP: "${TAP}"
     plugins:
       - EOSIO/anka#v0.6.1:
