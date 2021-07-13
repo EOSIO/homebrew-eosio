@@ -1,5 +1,7 @@
   - label: ":darwin: macOS ${OS_STYLIZED} - ${LABEL}"
     command:
+      - "ls -la"
+      - "tree || (brew update && brew install tree && tree)"
       - "./${BUILDKITE_PIPELINE_SLUG}/.ci/test.sh"
     env:
       GIT_TAG: "${TAG}"
