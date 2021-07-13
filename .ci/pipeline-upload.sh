@@ -28,6 +28,7 @@ EOF
 # parse ruby file and generate pipeline steps
 export LABEL='Homebrew Package Validation'
 for OS in $(cat "$RUBY_FILE" | grep -P '^\s+sha256' | awk '{print $2}' | tr -d ':'); do
+    export OS="$OS" # for jq env command
     echo "Found $OS operating system." >&2
     export VM="$(echo "$AMKA_VM_MAP" | jq -r '.[env.OS]')"
     cat .ci/anka.yml | envsubst '$ANKA_LAYERS $LABEL $OS $TAG $TAP $TIMEOUT $VM'
