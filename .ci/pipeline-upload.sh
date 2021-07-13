@@ -6,9 +6,10 @@ export AMKA_VM_MAP='{"mojave":"10.14.6_6C_14G_80G","catalina":"10.15.5_6C_14G_80
 export PACKAGE='eosio'
 export REPO_UNDER_TEST='git@github.com:EOSIO/eos.git'
 export RETRY="$([[ "$BUILDKITE" == 'true' ]] && buildkite-agent meta-data get pipeline-upload-retries --default '0' || echo '0')"
-export ROOT_URL="$(cat "$RUBY_FILE" | grep -P '^\s+root_url' | head -1 | awk '{print $2}' | tr -d '"')"
 echo "Retry number $RETRY." >&2
 export RUBY_FILE='eosio.rb'
+export ROOT_URL="$(cat "$RUBY_FILE" | grep -P '^\s+root_url' | head -1 | awk '{print $2}' | tr -d '"')"
+echo "Found root URL \"$ROOT_URL\"." >&2
 export TAG="v$(cat "$RUBY_FILE" | grep -P '^\s+version' | awk '{print $2}' | tr -d '"')"
 echo "Found git tag '$TAG'." >&2
 export TAP='EOSIO/eosio'
