@@ -22,5 +22,5 @@
       - EOSIO/skip-checkout#v0.1.1:
           cd: ~
     agents: "queue=mac-anka-node-fleet"
-    timeout: ${TIMEOUT:-10}
+    timeout: ${TIMEOUT:-18}
 
