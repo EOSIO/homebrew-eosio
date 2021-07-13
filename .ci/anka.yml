@@ -1,4 +1,4 @@
-  - label: ":darwin: macOS ${OS} - ${LABEL}"
+  - label: ":darwin: macOS ${OS_STYLIZED} - ${LABEL}"
     command:
       - ".ci/test.sh"
     env:
