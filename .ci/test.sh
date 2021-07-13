@@ -11,7 +11,7 @@ echo '+++ :beer: Homebrew Tap and Install'
 TAP="brew tap '$TAP'"
 echo "$ $TAP"
 eval $TAP
-INSTALL="brew install '$INSTALL'"
+INSTALL="brew install '$PACKAGE'"
 echo "$ $INSTALL"
 eval $INSTALL
 echo '+++ :label: Full Version Label Test'
