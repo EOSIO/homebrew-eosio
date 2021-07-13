@@ -1,6 +1,6 @@
 #!/bin/bash
 set -eo pipefail
-echo '+++ :evergreen_tree: Configuring Environment'
+echo '+++ :evergreen_tree: Configuring Environment' >&2
 export ANKA_LAYERS='clean::cicd::git-ssh::nas::brew::buildkite-agent'
 export AMKA_VM_MAP='{"mojave":"10.14.6_6C_14G_80G","catalina":"10.15.5_6C_14G_80G","big_sur":"11.2.1_6C_14G_80G"}'
 export RETRY="$([[ "$BUILDKITE" == 'true' ]] && buildkite-agent meta-data get pipeline-upload-retries --default '0' || echo '0')"
@@ -19,6 +19,7 @@ elif [[ "$DEBUG" == 'true' ]]; then
     echo "WARNING: $WARNING_MSG" | tr -d '`' | cat >&2
     [[ "$BUILDKITE" == 'true' && "$RETRY" == '0' ]] && echo "**WARNING:** $WARNING_MSG" | tr '"' '`' | buildkite-agent annotate --style 'warning' --context 'not-master'
 fi
+echo '+++ :yaml: Generating Pipeline Steps' >&2
 # yaml header
 cat <<EOF
 steps:
@@ -33,4 +34,4 @@ for OS in $(cat "$RUBY_FILE" | grep -P '^\s+sha256' | awk '{print $2}' | tr -d '
     export VM="$(echo "$AMKA_VM_MAP" | jq -r '.[env.OS]')"
     cat .ci/anka.yml | envsubst '$ANKA_LAYERS $LABEL $OS $TAG $TAP $TIMEOUT $VM'
 done
-echo '--- :white_check_mark: Done! Good luck :)'
+echo '--- :white_check_mark: Done! Good luck :)' >&2
