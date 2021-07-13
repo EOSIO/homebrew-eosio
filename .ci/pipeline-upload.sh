@@ -10,7 +10,7 @@ echo "Retry number $RETRY." >&2
 export RUBY_FILE='eosio.rb'
 export TAG="v$(cat "$RUBY_FILE" | grep -P '^\s+version' | awk '{print $2}' | tr -d '"')"
 echo "Found git tag '$TAG'." >&2
-export TAP='eosio/eosio'
+export TAP='EOSIO/eosio'
 [[ "$BUILDKITE" == 'true' ]] && buildkite-agent meta-data set pipeline-upload-retries "$(( $RETRY + 1 ))"
 # only run on master
 if [[ "$BUILDKITE_BRANCH" != 'master' && "$DEBUG" != 'true' ]]; then
