@@ -11,7 +11,7 @@ eval $BREW_UPDATE
 echo '+++ :beer: Homebrew Tap and Install'
 BREW_TAP="brew tap '$TAP'"
 echo "$ $BREW_TAP"
-BREW_eval $TAP
+eval $TAP
 BREW_INSTALL="brew install '$PACKAGE'"
 echo "$ $BREW_INSTALL"
 eval $BREW_INSTALL
