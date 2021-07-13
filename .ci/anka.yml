@@ -1,6 +1,6 @@
   - label: ":darwin: macOS ${OS_STYLIZED} - ${LABEL}"
     command:
-      - ".ci/test.sh"
+      - "./${BUILDKITE_PIPELINE_SLUG}/.ci/test.sh"
     env:
       GIT_TAG: "${TAG}"
       TAP: "${TAP}"

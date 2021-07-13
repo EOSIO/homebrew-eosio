@@ -33,6 +33,6 @@ for OS in $(cat "$RUBY_FILE" | grep -P '^\s+sha256' | awk '{print $2}' | tr -d '
     export OS_STYLIZED="$(echo "$OS" | sed -e 's/\b\(.\)/\u\1/g')"
     echo "Found $OS operating system." >&2
     export VM="$(echo "$AMKA_VM_MAP" | jq -r '.[env.OS]')"
-    cat .ci/anka.yml | envsubst '$ANKA_LAYERS $LABEL $OS_STYLIZED $TAG $TAP $VM'
+    cat .ci/anka.yml | envsubst '$ANKA_LAYERS $BUILDKITE_PIPELINE_SLUG $LABEL $OS_STYLIZED $TAG $TAP $VM'
 done
 echo '--- :white_check_mark: Done! Good luck :)' >&2
