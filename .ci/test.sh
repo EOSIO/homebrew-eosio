@@ -41,10 +41,10 @@ echo "$ $BREW_INSTALL"
 eval $BREW_INSTALL
 echo '+++ :label: Full Version Label Test'
 cd eos
-WHICH_NODEOS='which nodeos'
-echo "$ $WHICH_NODEOS"
-export BUILD_ROOT="$(which nodeos | tee >(cat - >&9) | sed 's_/bin/nodeos__g')"
-echo "Found nodeos at \"$BUILD_ROOT/bin/nodeos\"."
+WHICH_BIN="which '$BIN'"
+echo "$ $WHICH_BIN"
+export BUILD_ROOT="$(eval $WHICH_BIN | tee >(cat - >&9) | sed "s_/bin/${BIN}__g")"
+echo "Found '$BIN' at \"$BUILD_ROOT/bin/$BIN\"."
 export BUILDKITE_COMMIT="$(git rev-parse HEAD)" # override homebrew-eosio commit with eos tag commit
 echo "Found git commit '$REPO_UNDER_TEST:$BUILDKITE_COMMIT'."
 unset BUILDKITE_TAG

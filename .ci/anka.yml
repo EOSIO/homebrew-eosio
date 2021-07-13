@@ -3,6 +3,7 @@
       - "git clone --recursive --single-branch --branch '${BUILDKITE_BRANCH}' '${BUILDKITE_REPO}'"
       - "./${BUILDKITE_PIPELINE_SLUG}/.ci/test.sh"
     env:
+      BIN: "${BIN}"
       BOTTLE: "${BOTTLE}"
       GIT_TAG: "${TAG}"
       OS: "${OS}"
