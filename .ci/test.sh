@@ -11,13 +11,14 @@ echo "$ $BREW_UPDATE"
 eval $BREW_UPDATE
 if [[ ! -z "$BOTTLE" ]]; then
     echo '+++ :hash: Verify Package Hash - SHA-256'
+    cd "$BUILDKITE_PIPELINE_SLUG" # same as repo name
     DOWNLOAD="curl -fsSL -o './$BOTTLE' '$ROOT_URL/$BOTTLE'"
     echo "$ $DOWNLOAD"
     eval $DOWNLOAD
     FILE_HASH="openssl dgst -sha256 '$BOTTLE'"
     echo "$ $FILE_HASH"
     BOTTLE_HASH="$(eval $FILE_HASH | tee >(cat - >&9) | awk '{print $2}')"
-    RUBY_LINE="cat ./homebrew-eosio/$RUBY_FILE | grep -P 'sha256.*$OS'"
+    RUBY_LINE="cat '$RUBY_FILE' | grep 'sha256' | grep '$OS'"
     echo "$ $RUBY_LINE"
     RUBY_HASH="$(eval $RUBY_LINE | tee >(cat - >&9) | awk '{print $3}' | tr -d '"')"
     if [[ "$BOTTLE_HASH" == "$RUBY_HASH" ]]; then
@@ -29,6 +30,7 @@ if [[ ! -z "$BOTTLE" ]]; then
         [[ "$BUILDKITE" == 'true' ]] && echo "**FAILURE:** $FAIL_MSG" | buildkite-agent annotate --style 'error' --context "wrong-hash-$OS"
         exit 2
     fi
+    cd ..
 fi
 echo '+++ :beer: Homebrew Tap and Install'
 BREW_TAP="brew tap '$TAP'"
