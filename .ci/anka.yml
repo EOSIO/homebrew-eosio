@@ -5,6 +5,7 @@
     env:
       GIT_TAG: "${TAG}"
       PACKAGE: "${PACKAGE}"
+      REPO_UNDER_TEST: "${REPO_UNDER_TEST}"
       TAP: "${TAP}"
     plugins:
       - EOSIO/anka#v0.6.1:

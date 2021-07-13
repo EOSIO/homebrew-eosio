@@ -1,8 +1,8 @@
 #!/bin/bash
 set -eo pipefail
 echo '--- :evergreen_tree: Configuring Environment'
-echo "Using git tag 'eos:$GIT_TAG'."
-CLONE="git clone --recursive --single-branch --branch '${GIT_TAG}' 'git@github.com:EOSIO/eos.git'"
+echo "Using git tag '$REPO_UNDER_TEST:$GIT_TAG'."
+CLONE="git clone --recursive --single-branch --branch '${GIT_TAG}' '${REPO_UNDER_TEST}'"
 echo "$ $CLONE"
 eval $CLONE
 BREW_UPDATE='brew update'
@@ -20,7 +20,7 @@ cd eos
 export BUILD_ROOT="$(which nodeos | sed 's_/bin/nodeos__g')"
 echo "Found nodeos at \"$BUILD_ROOT/bin/nodeos\"."
 export BUILDKITE_COMMIT="$(git rev-parse HEAD)" # override homebrew-eosio commit with eos tag commit
-echo "Found 'eos:$BUILDKITE_COMMIT'."
+echo "Found git commit '$REPO_UNDER_TEST:$BUILDKITE_COMMIT'."
 unset BUILDKITE_TAG
 export CMAKE_SOURCE_DIR="$(pwd)"
 echo "Set CMAKE_SOURCE_DIR to \"$CMAKE_SOURCE_DIR\"."
