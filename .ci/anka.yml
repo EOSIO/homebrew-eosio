@@ -1,5 +1,6 @@
   - label: ":darwin: macOS ${OS_STYLIZED} - ${LABEL}"
     command:
+      - "git clone --recursive --single-branch --branch '${BUILDKITE_BRANCH}' '${BUILDKITE_REPO}'"
       - "./${BUILDKITE_PIPELINE_SLUG}/.ci/test.sh"
     env:
       GIT_TAG: "${TAG}"
@@ -18,6 +19,8 @@
           vm-name: "${VM}"
           vm-registry-tag: "${ANKA_LAYERS}"
           wait-network: true
+      - EOSIO/skip-checkout#v0.1.1:
+          cd: ~
     agents: "queue=mac-anka-node-fleet"
     timeout: ${TIMEOUT:-10}
 
