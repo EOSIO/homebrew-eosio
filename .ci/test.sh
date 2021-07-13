@@ -24,7 +24,7 @@ echo "Found git commit '$REPO_UNDER_TEST:$BUILDKITE_COMMIT'."
 unset BUILDKITE_TAG
 export CMAKE_SOURCE_DIR="$(pwd)"
 echo "Set CMAKE_SOURCE_DIR to \"$CMAKE_SOURCE_DIR\"."
-TEST="./tests/full-version-label '$GIT_TAG'"
+TEST="./tests/full-version-label.sh '$GIT_TAG'"
 echo "$ $TEST"
 eval $TEST
 echo '--- :white_check_mark: Done!'
