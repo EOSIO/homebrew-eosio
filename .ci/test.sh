@@ -17,7 +17,7 @@ if [[ ! -z "$BOTTLE" ]]; then
     FILE_HASH="openssl dgst -sha256 '$BOTTLE'"
     echo "$ $FILE_HASH"
     BOTTLE_HASH="$(eval $FILE_HASH | tee >(cat - >&9) | awk '{print $2}')"
-    RUBY_LINE="cat '$RUBY_FILE' | grep -P 'sha256.*$OS'"
+    RUBY_LINE="cat ./homebrew-eosio/$RUBY_FILE | grep -P 'sha256.*$OS'"
     echo "$ $RUBY_LINE"
     RUBY_HASH="$(eval $RUBY_LINE | tee >(cat - >&9) | awk '{print $3}' | tr -d '"')"
     if [[ "$BOTTLE_HASH" == "$RUBY_HASH" ]]; then
