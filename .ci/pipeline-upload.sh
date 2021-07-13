@@ -5,8 +5,10 @@ export ANKA_LAYERS='clean::cicd::git-ssh::nas::brew::buildkite-agent'
 export AMKA_VM_MAP='{"mojave":"10.14.6_6C_14G_80G","catalina":"10.15.5_6C_14G_80G","big_sur":"11.2.1_6C_14G_80G"}'
 export PACKAGE='eosio'
 export RETRY="$([[ "$BUILDKITE" == 'true' ]] && buildkite-agent meta-data get pipeline-upload-retries --default '0' || echo '0')"
+echo "Retry number $RETRY." >&2
 export RUBY_FILE='eosio.rb'
 export TAG="v$(cat "$RUBY_FILE" | grep -P '^\s+version' | awk '{print $2}' | tr -d '"')"
+echo "Found git tag '$TAG'." >&2
 export TAP='EOSIO/eosio'
 [[ "$BUILDKITE" == 'true' ]] && buildkite-agent meta-data set pipeline-upload-retries "$(( $RETRY + 1 ))"
 # only run on master
@@ -37,3 +39,4 @@ for OS in $(cat "$RUBY_FILE" | grep -P '^\s+sha256' | awk '{print $2}' | tr -d '
     cat .ci/anka.yml | envsubst '$ANKA_LAYERS $BUILDKITE_PIPELINE_SLUG $BUILDKITE_REPO $LABEL $OS_STYLIZED $PACKAGE $TAG $TAP $VM'
 done
 echo '--- :white_check_mark: Done! Good luck :)' >&2
+echo 'Done.' >&2
