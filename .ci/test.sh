@@ -5,16 +5,16 @@ echo "Using git tag 'eos:$GIT_TAG'."
 CLONE="git clone --recursive --single-branch --branch '${GIT_TAG}' 'git@github.com:EOSIO/eos.git'"
 echo "$ $CLONE"
 eval $CLONE
-UPDATE='brew update'
-echo "$ $UPDATE"
-eval $UPDATE
+BREW_UPDATE='brew update'
+echo "$ $BREW_UPDATE"
+eval $BREW_UPDATE
 echo '+++ :beer: Homebrew Tap and Install'
-TAP="brew tap '$TAP'"
-echo "$ $TAP"
-eval $TAP
-INSTALL="brew install '$PACKAGE'"
-echo "$ $INSTALL"
-eval $INSTALL
+BREW_TAP="brew tap '$TAP'"
+echo "$ $BREW_TAP"
+BREW_eval $TAP
+BREW_INSTALL="brew install '$PACKAGE'"
+echo "$ $BREW_INSTALL"
+eval $BREW_INSTALL
 echo '+++ :label: Full Version Label Test'
 cd eos
 export BUILD_ROOT="$(which nodeos | sed 's_/bin/nodeos__g')"
