@@ -64,7 +64,7 @@ eval $TEST
 EXIT_STATUS="$?"
 set -e
 if [[ "$EXIT_STATUS" != '0' ]]; then
-    FAIL_MSG="Version label test failed on "$OS_STYLIZED"'!'
+    FAIL_MSG="Version label test failed on $OS_STYLIZED"'!'
     echo "FAILURE: $FAIL_MSG"
     [[ "$BUILDKITE" == 'true' ]] && echo "**FAILURE:** $FAIL_MSG" | buildkite-agent annotate --style 'error' --context "test-failure-$OS"
     exit "$EXIT_STATUS"
