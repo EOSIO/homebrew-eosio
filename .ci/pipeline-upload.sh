@@ -7,7 +7,6 @@ export BIN='nodeos'
 export PACKAGE='eosio'
 export REPO_UNDER_TEST='git@github.com:EOSIO/eos.git'
 export RETRY="$([[ "$BUILDKITE" == 'true' ]] && buildkite-agent meta-data get pipeline-upload-retries --default '0' || echo '0')"
-echo "Retry number $RETRY." >&2
 export RUBY_FILE='eosio.rb'
 export ROOT_URL="$(cat "$RUBY_FILE" | grep -P '^\s+root_url' | head -1 | awk '{print $2}' | tr -d '"')"
 echo "Found root URL \"$ROOT_URL\"." >&2
@@ -15,6 +14,15 @@ export TAG="v$(cat "$RUBY_FILE" | grep -P '^\s+version' | awk '{print $2}' | tr 
 echo "Found git tag '$TAG'." >&2
 export TAP='EOSIO/eosio'
 [[ "$BUILDKITE" == 'true' ]] && buildkite-agent meta-data set pipeline-upload-retries "$(( $RETRY + 1 ))"
+# attach pipeline documentation
+echo '+++ :md: Attaching Documentation'
+export DOCS_URL="https://github.com/EOSIO/homebrew-eosio/blob/${BUILDKITE_COMMIT:-master}/.ci/README.md"
+if [[ "$BUILDKITE" == 'true' && "$RETRY" == '0' ]]; then
+    echo "This documentation is also available on [GitHub]($DOCS_URL)." | buildkite-agent annotate --append --style 'info' --context 'documentation'
+    cat .ci/README.md | buildkite-agent annotate --append --style 'info' --context 'documentation'
+elif [[ "$BUILDKITE" == 'true' ]]; then
+    printf "Skipping \033]1339;url=$DOCS_URL;content=documentation\a upload for job retry number $RETRY.\n" >&2
+fi
 # only run on master
 if [[ "$BUILDKITE_BRANCH" != 'master' && "$DEBUG" != 'true' ]]; then
     ERROR_MSG='This pipeline currently does nothing on branches besides `master`!'
