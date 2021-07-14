@@ -59,6 +59,15 @@ export CMAKE_SOURCE_DIR="$(pwd)"
 echo "Set CMAKE_SOURCE_DIR to \"$CMAKE_SOURCE_DIR\"."
 TEST="./tests/full-version-label.sh '$GIT_TAG'"
 echo "$ $TEST"
+set +e
 eval $TEST
+EXIT_STATUS="$?"
+set -e
+if [[ "$EXIT_STATUS" != '0' ]]; then
+    FAIL_MSG="Version label test failed on "$OS_STYLIZED"'!'
+    echo "FAILURE: $FAIL_MSG"
+    [[ "$BUILDKITE" == 'true' ]] && echo "**FAILURE:** $FAIL_MSG" | buildkite-agent annotate --style 'error' --context "test-failure-$OS"
+    exit "$EXIT_STATUS"
+fi
 echo '--- :white_check_mark: Done!'
 echo 'Done.'
