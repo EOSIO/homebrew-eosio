@@ -47,7 +47,7 @@ export BUILD_ROOT="$(eval $WHICH_BIN | tee >(cat - >&9) | sed "s_/bin/${BIN}__g"
 if [[ -z "$BUILD_ROOT" ]]; then
     FAIL_MSG="'$BIN' binary not found after homebrew installation on $OS_STYLIZED"'!'
     echo "FAILURE: $FAIL_MSG"
-    [[ "$BUILDKITE" == 'true' ]] && echo "**FAILURE:** $FAIL_MSG" | buildkite-agent annotate --style 'error' --context "no-binary-$OS"
+    [[ "$BUILDKITE" == 'true' ]] && echo "**FAILURE:** $FAIL_MSG" | tr "'" '`' | buildkite-agent annotate --style 'error' --context "no-binary-$OS"
     exit 3
 else
     echo "Found '$BIN' at \"$BUILD_ROOT/bin/$BIN\"."
