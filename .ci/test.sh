@@ -41,12 +41,6 @@ echo "$ $BREW_INSTALL"
 eval $BREW_INSTALL
 echo '+++ :label: Full Version Label Test'
 cd eos
-LS='ls -la ~'
-echo "$ $LS"
-eval $LS
-LS='ls -la /usr/local/bin'
-echo "$ $LS"
-eval $LS
 WHICH_BIN="which '$BIN'"
 echo "$ $WHICH_BIN"
 export BUILD_ROOT="$(eval $WHICH_BIN | tee >(cat - >&9) | sed "s_/bin/${BIN}__g")"
@@ -56,12 +50,6 @@ echo "Found git commit '$REPO_UNDER_TEST:$BUILDKITE_COMMIT'."
 unset BUILDKITE_TAG
 export CMAKE_SOURCE_DIR="$(pwd)"
 echo "Set CMAKE_SOURCE_DIR to \"$CMAKE_SOURCE_DIR\"."
-echo "PATH='$PATH'"
-buildkite-agent artifact upload ~/.bash_profile || :
-buildkite-agent artifact upload ~/.bash_profile || :
-RUN='/usr/local/bin/nodeos --full-version'
-echo "$ $RUN"
-eval $RUN
 TEST="./tests/full-version-label.sh '$GIT_TAG'"
 echo "$ $TEST"
 eval $TEST
