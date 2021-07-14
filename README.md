@@ -1,5 +1,7 @@
 # homebrew-eosio
-This repository is a "[tap](https://docs.brew.sh/Taps)" for `homebrew`, a macOS package manager. When you run `brew install eosio` or `brew upgrade`, `brew` will look here to determine where to find the latest macOS binaries for EOSIO.
+This repository is a "[tap](https://docs.brew.sh/Taps)" for [Homebrew](https://brew.sh), a macOS package manager. When you run `brew install eosio` or `brew upgrade`, `brew` will look here to determine where to find the latest macOS binaries for [EOSIO](https://github.com/EOSIO/eos).
+
+The [homebrew-eosio](https://buildkite.com/EOSIO/homebrew-eosio) pipeline runs against the `master` branch of this repo to verify that the [EOSIO](https://github.com/EOSIO/eos) packages we are providing via `brew` can be installed and invoked without errors on clean installations of their respective macOS versions. It also verifies the SHA-256 of the bottle matches the tap here, and the version string of the binary matches our CMake.
 
 ## Automation
 The [eosioBrewAutoPR](https://github.com/EOSIO/auto-events-subscribers/blob/master/lambdas/eosioBrewAutoPR.js) [lambda](https://en.wikipedia.org/wiki/AWS_Lambda) recieves a [webhook](https://en.wikipedia.org/wiki/Webhook) (event notification) any time a Buildkite step finishes across the [EOSIO organization](http://buildkite.com/EOSIO).

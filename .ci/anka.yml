@@ -1,0 +1,34 @@
+  - label: ":darwin: macOS ${OS_STYLIZED} - ${LABEL}"
+    command:
+      - "git clone --recursive --single-branch --branch '${BUILDKITE_BRANCH}' '${BUILDKITE_REPO}'"
+      - "./${BUILDKITE_PIPELINE_SLUG}/.ci/test.sh"
+    env:
+      BIN: "${BIN}"
+      BOTTLE: "${BOTTLE}"
+      GIT_TAG: "${TAG}"
+      OS: "${OS}"
+      OS_STYLIZED: "${OS_STYLIZED}"
+      PACKAGE: "${PACKAGE}"
+      REPO_UNDER_TEST: "${REPO_UNDER_TEST}"
+      ROOT_URL: "${ROOT_URL}"
+      RUBY_FILE: "${RUBY_FILE}"
+      TAP: "${TAP}"
+    plugins:
+      - EOSIO/anka#v0.6.1:
+          always-pull: true
+          debug: true
+          failover-registries:
+          - "registry_1"
+          - "registry_2"
+          inherit-environment-vars: true
+          no-volume: true
+          pre-execute-ping-sleep: github.com
+          pre-execute-sleep: 5
+          vm-name: "${VM}"
+          vm-registry-tag: "${ANKA_LAYERS}"
+          wait-network: true
+      - EOSIO/skip-checkout#v0.1.1:
+          cd: ~
+    agents: "queue=mac-anka-node-fleet"
+    timeout: ${TIMEOUT:-18}
+
