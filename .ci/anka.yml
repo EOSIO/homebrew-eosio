@@ -1,7 +1,7 @@
   - label: ":darwin: macOS ${OS_STYLIZED} - ${LABEL}"
-    command:
-      - "git clone --recursive --single-branch --branch '${BUILDKITE_BRANCH}' '${BUILDKITE_REPO}'"
-      - "./${BUILDKITE_PIPELINE_SLUG}/.ci/test-prod-tap.sh"
+    command: |
+      git clone --recursive --single-branch --branch '${BUILDKITE_BRANCH}' '${BUILDKITE_REPO}'
+      if [[ "${BUILDKITE_BRANCH}" == 'master' ]] ; then ./${BUILDKITE_PIPELINE_SLUG}/.ci/test-prod-tap.sh ; else ./${BUILDKITE_PIPELINE_SLUG}/.ci/test-local-tap.sh ; fi
     env:
       BIN: "${BIN}"
       BOTTLE: "${BOTTLE}"
