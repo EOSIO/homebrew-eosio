@@ -44,7 +44,7 @@ function test_binary_exists {
 
 function test_full_version_matches {
    echo "Using git tag '$REPO_UNDER_TEST:$GIT_TAG'."
-   perform "git clone --recursive --single-branch --branch '${GIT_TAG}' '${REPO_UNDER_TEST}'"
+   perform "git clone --quiet --recursive --single-branch --branch '${GIT_TAG}' '${REPO_UNDER_TEST}' > /dev/null"
    pushd $(echo ${REPO_UNDER_TEST} | sed 's/.*\/\(.*\)\.git/\1/')
 
    export BUILDKITE_COMMIT="$(git rev-parse HEAD)" # override homebrew-eosio commit with eos tag commit
