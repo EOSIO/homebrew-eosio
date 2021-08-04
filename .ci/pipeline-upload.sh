@@ -23,17 +23,6 @@ if [[ "$BUILDKITE" == 'true' && "$RETRY" == '0' ]]; then
 elif [[ "$BUILDKITE" == 'true' ]]; then
     printf "Skipping \033]1339;url=$DOCS_URL;content=documentation\a upload for job retry number $RETRY.\n" >&2
 fi
-# only run on master
-if [[ "$BUILDKITE_BRANCH" != 'master' && "$DEBUG" != 'true' ]]; then
-    ERROR_MSG='This pipeline currently does nothing on branches besides `master`!'
-    echo "ERROR: $ERROR_MSG" | tr -d '`' | cat >&2
-    [[ "$BUILDKITE" == 'true' && "$RETRY" == '0' ]] && echo "**ERROR:** $ERROR_MSG" | buildkite-agent annotate --style 'error' --context 'not-master'
-    exit 1
-elif [[ "$DEBUG" == 'true' ]]; then
-    WARNING_MSG='Running on non-`master` branch because `DEBUG` is set to "true".'
-    echo "WARNING: $WARNING_MSG" | tr -d '`' | cat >&2
-    [[ "$BUILDKITE" == 'true' && "$RETRY" == '0' ]] && echo "**WARNING:** $WARNING_MSG" | tr '"' '`' | buildkite-agent annotate --style 'warning' --context 'not-master'
-fi
 echo '+++ :yaml: Generating Pipeline Steps' >&2
 # yaml header
 cat <<EOF
